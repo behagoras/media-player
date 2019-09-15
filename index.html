@@ -1,0 +1,52 @@
+
+<!-- saved from url=(0094)https://static.platzi.com/media/public/uploads/index_c99f9da0-a7da-4407-acba-3c61ee1e2a02.html -->
+<html data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>PlatziMediaPlayer.js</title>
+    <link rel="stylesheet" href="./index_files/normalize.css">
+    <link rel="stylesheet" href="./index_files/index.css">
+  </head>
+
+  <body>
+    <header>
+      <h1>PlatziMediaPlayer.js</h1>
+      <p>An extensible media player.</p>
+    </header>
+
+    <main class="container">
+      <video class="movie">
+        <source src="./assets/BigBuckBunny.mp4">
+      </video>
+
+      <button>Play/Pause</button>
+    </main>
+
+    <script>
+      function MediaPlayer(config) {
+        this.media = config.el;
+      }
+
+      MediaPlayer.prototype.play = function() {
+        this.media.play();
+      };
+
+      MediaPlayer.prototype.pause = function() {
+        this.media.pause();
+      };
+
+      MediaPlayer.prototype.togglePlay = function() {
+        if (this.media.paused) {
+          this.play();
+        } else {
+          this.pause();
+        }
+      };
+
+      const video = document.querySelector('video');
+      const player = new MediaPlayer({ el: video });
+
+      const button = document.querySelector('button');
+      button.onclick = () => player.togglePlay();
+    </script>
+  
+
+</body></html>
