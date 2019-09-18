@@ -1,8 +1,7 @@
 function AutoPlay() {
 }
 AutoPlay.prototype.run = function name(player) {
-  debugger;
-  if(!player.muted){
+  if (!player.muted) {
     player.muted = true;
   }
   // player = muted();
