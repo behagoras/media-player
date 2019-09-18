@@ -7,10 +7,24 @@ function MediaPlayer(config) {
 }
 // eslint-disable-next-line no-underscore-dangle
 MediaPlayer.prototype._initPlugins = function () {
+  const player = {
+    play: () => this.play(),
+    pause: () => this.pause(),
+    media: this.media,
+
+    get muted() {
+      return this.media.mute;
+    },
+    set muted(value) {
+      this.media.mute = value;
+    },
+  };
+
   this.plugins.forEach((plugin) => {
-    plugin.run(this);
+    plugin.run(player);
   });
 };
+
 MediaPlayer.prototype.interact = function () {
   this.interacted = true;
 };
@@ -26,6 +40,7 @@ MediaPlayer.prototype.play = function () {
 MediaPlayer.prototype.pause = function () {
   this.media.pause();
 };
+
 MediaPlayer.prototype.togglePlay = function () {
   if (this.media.paused) {
     this.play();
