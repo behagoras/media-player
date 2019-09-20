@@ -9,13 +9,14 @@ class AutoPause {
     this.player = player;
 
     const observer = new IntersectionObserver(this.handleIntersection, {
-      threshold: this.threshold
+      threshold: this.threshold,
     });
 
     observer.observe(this.player.media);
-    document.addEventListener("visibilitychange", this.handleVisibilityChange);
+
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
   }
-  
+
   handleIntersection(entries) {
     const entry = entries[0];
 
@@ -29,7 +30,7 @@ class AutoPause {
   }
 
   handleVisibilityChange() {
-    const isVisible = document.visibilityState === "visible";
+    const isVisible = document.visibilityState === 'visible';
     if (isVisible) {
       this.player.play();
     } else {
